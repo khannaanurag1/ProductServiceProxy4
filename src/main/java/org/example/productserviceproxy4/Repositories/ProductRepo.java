@@ -39,7 +39,8 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
     @Query("SELECT c.name FROM Product p join Category c on p.category.id=c.id where p.id=:id")
     String getCategoryNameFromProductId(@Param("id") Long id);
 
-    //List<Product> findProductByTitle(String title);
+
     //List<Product> findByTitleEquals(String title, Pageable pageable);
     Page<Product> findByTitleEquals(String title, Pageable pageable);
+    //Page<Product> findProductByTitle(String title, Pageable pageable); Another way which works
 }

@@ -6,6 +6,7 @@ import org.example.productserviceproxy4.Models.Category;
 import org.example.productserviceproxy4.Models.Product;
 import org.example.productserviceproxy4.Services.SearchService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,16 @@ public class SearchController {
 //       return searchResults;
 //    }
     public Page<Product> searchProducts(@RequestBody SearchRequestDto searchRequestDto) {
-        return searchService.searchProducts(searchRequestDto.getQuery(), searchRequestDto.getPageNumber(), searchRequestDto.getSizeOfPage());
+        Page<Product> products = searchService.searchProducts(searchRequestDto.getQuery(), searchRequestDto.getPageNumber(), searchRequestDto.getSizeOfPage());
+        return products;
+
+//         In case we want to return Page<ProductDto> , below logic may give incorrect result
+//         List<ProductDto> searchResultsList = new ArrayList<>();
+//         for(Product p : products.getContent()) {
+//           searchResultsList.add(getProductDto(p));
+//         }
+//         Page<ProductDto> searchResultsPage = new PageImpl<>(searchResultsList);
+//         return searchResultsPage;
     }
 
     private ProductDto getProductDto(Product product) {
