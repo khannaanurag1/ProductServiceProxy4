@@ -14,4 +14,6 @@ public interface IProductService {
     Product updateProduct(Product product, Long productId);
 
     String deleteProduct(Long id);
+
+    Product getSpecialProduct(Long productId, Long userId);
 }

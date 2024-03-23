@@ -25,6 +25,13 @@ public class SearchController {
         this.searchService = searchService;
     }
 
+
+    //For Searching,Sorting and Paging class-23
+    //Step1 - Return list of product dto by just sending query parameter (commented code)
+    //Step2 - Send query, pageNumber and SizeOfPage and return type will be list (commented code)
+    //Step3 - Return Page<Product> with unsorted data (commented code)
+    //Step4 - Return Page<Product> with sorted data (hardcoded sort conditions)
+
     @PostMapping
 //    public List<ProductDto> searchProducts(@RequestBody SearchRequestDto searchRequestDto) {
 //       List<Product> products = searchService.searchProducts(searchRequestDto.getQuery(), searchRequestDto.getPageNumber(), searchRequestDto.getSizeOfPage());
@@ -37,14 +44,6 @@ public class SearchController {
     public Page<Product> searchProducts(@RequestBody SearchRequestDto searchRequestDto) {
         Page<Product> products = searchService.searchProducts(searchRequestDto.getQuery(), searchRequestDto.getPageNumber(), searchRequestDto.getSizeOfPage());
         return products;
-
-//         In case we want to return Page<ProductDto> , below logic may give incorrect result
-//         List<ProductDto> searchResultsList = new ArrayList<>();
-//         for(Product p : products.getContent()) {
-//           searchResultsList.add(getProductDto(p));
-//         }
-//         Page<ProductDto> searchResultsPage = new PageImpl<>(searchResultsList);
-//         return searchResultsPage;
     }
 
     private ProductDto getProductDto(Product product) {
@@ -55,4 +54,20 @@ public class SearchController {
         productDto.setCategory(product.getCategory().getName());
         return productDto;
     }
+
+
+//    Just Trying out Something
+//    public Page<ProductDto> searchProducts(@RequestBody SearchRequestDto searchRequestDto) {
+//        Page<Product> products = searchService.searchProducts(searchRequestDto.getQuery(), searchRequestDto.getPageNumber(), searchRequestDto.getSizeOfPage());
+//        //In case we want to return Page<ProductDto> , below logic may give incorrect result
+//        List<ProductDto> searchResultsList = new ArrayList<>();
+//        for(Product p : products.getContent()) {
+//            searchResultsList.add(getProductDto(p));
+//        }
+//        Page<ProductDto> searchResultsPage = new PageImpl<>(searchResultsList);
+//        return searchResultsPage;
+//    }
+
 }
+
+

@@ -41,6 +41,11 @@ public class FakeStoreProductService implements IProductService {
     }
 
     @Override
+    public Product getSpecialProduct(Long productId, Long userId) {
+        return null;
+    }
+
+    @Override
     public Product getProduct(Long id) {
         FakeStoreClientProductDto fakeStoreClientProductDto = fakeStoreApiClient.getProduct(id);
         Product product = getProduct(fakeStoreClientProductDto);

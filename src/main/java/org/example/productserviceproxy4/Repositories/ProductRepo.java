@@ -40,6 +40,12 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
     String getCategoryNameFromProductId(@Param("id") Long id);
 
 
+    //For Searching,Sorting and Paging class-23
+    //Step1 - Return list of product by just sending title parameter
+    //Step2 - Send query, Pageable and return type will be list
+    //Step3 - Return Page<Product> and Send query, Pageable
+    //Step4 - Return Page<Product> and Send query, Pageable and sort at service level , same as Step3
+
     //List<Product> findByTitleEquals(String title, Pageable pageable);
     Page<Product> findByTitleEquals(String title, Pageable pageable);
     //Page<Product> findProductByTitle(String title, Pageable pageable); Another way which works

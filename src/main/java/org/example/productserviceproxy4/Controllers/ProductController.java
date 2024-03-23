@@ -42,6 +42,13 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/{id1}/{id2}")
+    public ResponseEntity<Product> GetSpecialProduct(@PathVariable Long id1, @PathVariable Long id2)  {
+       return new ResponseEntity<>(productService.getSpecialProduct(id1,id2),HttpStatus.OK);
+    }
+
+
+
     @PostMapping("")
     public ResponseEntity<Product> createProduct(@RequestBody ProductDto productDto) {
         Product product = getProduct(productDto);
